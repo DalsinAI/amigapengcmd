@@ -260,11 +260,11 @@ int DoLinePart (SDL_Surface *Surface, Sint32 X1, Sint32 Y1, Sint32 X2, Sint32 Y2
 
 void LinePart(Sint32 X1, Sint32 Y1, Sint32 X2, Sint32 Y2, Sint32 lower, Sint32 upper, Uint32 Color)
 {
-   lock(Screen);
+   lock();
 
    /* Draw the line */
    DoLinePart(Screen, X1, Y1, X2, Y2, lower, upper, Color, &PutPixel);
-   unlock(Screen);
+   unlock();
 }
 
 void Update()

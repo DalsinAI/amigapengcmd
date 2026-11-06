@@ -3,6 +3,8 @@
 
 static SDL_Joystick *joy=NULL;
 
+void ComplainAndExit(void);
+
 void JoystickInit()
 {
     puts("** Init joystick **");
