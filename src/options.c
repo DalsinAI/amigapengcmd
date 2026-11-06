@@ -10,10 +10,15 @@ FILE *OpenOptionsFile( char *mode )
     char filename[200];
     FILE *file;
     
+#ifdef __amigaos__
+    /* the high scores and settings beside the program */
+    snprintf( filename, sizeof(filename), "PROGDIR:penguin-command.dat");
+#else
     if ((char *)getenv("HOME") != NULL)
 		snprintf( filename, sizeof(filename), "%s/.penguin-command", getenv("HOME"));
     else
 		sprintf( filename, "penguin-command.dat");
+#endif
 
     file = fopen(filename, mode);
     
@@ -83,8 +88,13 @@ void ReadOptions()
 	||(fscanf(file, "%d\n",&MediumDetail)==EOF)
 	||(fscanf(file, "%d\n",&HighDetail)==EOF)
 	||(fscanf(file, "%d\n",&MusicVol)==EOF)
-	||(fscanf(file, "%d\n",&SoundVol)==EOF))
+	||(fscanf(file, "%d\n",&SoundVol)==EOF)) {
+	/* closed first: AmigaDOS will not open a file for writing while
+	   it is open for reading */
+	fclose(file);
 	WriteOptions();
+	return;
+    }
 //    for (i=0;i<10;i++)
 //	printf("%s %d\n",Player[i],Hiscore[i]);
     
