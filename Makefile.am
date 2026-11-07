@@ -2,7 +2,7 @@
 SUBDIRS    = data src
 
 RPMSPEC    = penguin-command.spec
-man_MANS   = penguin-command.6 penguin-command.ja.6
+man_MANS   = penguin-command.6
 
 
 

@@ -32,7 +32,12 @@
 #endif
 
 
+#ifdef __amigaos__
+    /* a window on the Workbench; -f for the full screen */
+    int fullscreen=0, CityDestroyed[6]={0,0,0,0,0,0},
+#else
     int fullscreen=1, CityDestroyed[6]={0,0,0,0,0,0},
+#endif
 	CannonDestroyed[3]={0,0,0}, Score=0, HWCursor=0, NoAlpha=0, ArcadeMode=0, MusicVol=10, SoundVol=10;
 //images
     SDL_Surface *ShotPic,*CityPic,*BackPic,*CityHitPic,*Cannon[21],*Font,
@@ -391,8 +396,13 @@ void TextHelp(char *argv[])
     printf("\nPenguin Command Version %s\n",VERSION);
     puts("The newest version can be obtained at http://www.linux-games.com/\n");
     printf("Usage: %s [options]\n",argv[0]);
+#ifdef __amigaos__
+    puts("  [-f, --fullscreen]         start in fullscreen mode");
+    puts("  [-w, --windowed]           start in windowed mode (default)");
+#else
     puts("  [-f, --fullscreen]         start in fullscreen mode (default)");
     puts("  [-w, --windowed]           start in windowed mode");
+#endif
     puts("  [-s, --nosound]            start without sound");
     puts("  [-l, --lefthandedmouse]    swaps left and right mouse buttons");
     puts("  [-h, --help]               this text\n");
