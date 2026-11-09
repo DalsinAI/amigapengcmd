@@ -76,6 +76,7 @@ dist: $(BUILD)/$(PROG) $(ICONS) AMIGA_PORT.md
 	cp data/gfx/*.png data/gfx/*.jpg $(OUT)/data/gfx/
 	cp data/sound/*.wav data/sound/*.s3m $(OUT)/data/sound/
 	cp AMIGA_PORT.md $(OUT)/ReadMe
+	cp amiga/Controls $(OUT)/Controls
 	cp README $(OUT)/ReadMe-upstream
 	cp COPYING $(OUT)/COPYING.txt
 	cp amiga/libmikmod/COPYING.LIB $(OUT)/COPYING-libmikmod.txt
